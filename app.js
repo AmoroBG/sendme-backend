@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 // INTERNAL MODULES
 const dbconnect = require("./dbconnection")
 const userRoutes=require("./routes/user")
+const taskRoutes=require("./routes/task")
 
 // LOAD CONFIG
 dotenv.config({ path: 'config.env' })
@@ -27,6 +28,7 @@ app.get("/", function(req, res){
   res.sendFile("index.html")
 })
 app.use("/users", userRoutes)
+app.use("/tasks", taskRoutes)
 
 
 // SERVER

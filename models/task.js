@@ -10,10 +10,15 @@ const taskSchema={
         type:String,
         require:true
     },
-       taskOwner:{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    //    taskOwner:{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     default:null
+    // },
+    dateCreated:{
+        type:Date,
+        default:Date.now
+    }
     
 }
 const Task=mongoose.model("Task", taskSchema)
