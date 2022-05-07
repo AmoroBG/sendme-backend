@@ -1,11 +1,13 @@
 // REQUIRE PACKAGES
 const express = require('express')
-
+const path=require("path")
+const dotenv = require('dotenv')
 // INTERNAL MODULES
-
+const dbconnect = require("./dbconnection")
+const userRoutes=require("./routes/user")
 
 // LOAD CONFIG
-
+dotenv.config({ path: 'config.env' })
 
 // INITIALIZE APP
 const app = express()
@@ -13,7 +15,7 @@ const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
 
 // DB CONNECTION
-
+dbconnect
 
 // MIDDLEWARE
 // body-parser
@@ -24,7 +26,7 @@ app.use(express.json())
 app.get("/", function(req, res){
   res.sendFile("index.html")
 })
-
+app.use("/users", userRoutes)
 
 
 // SERVER
