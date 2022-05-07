@@ -10,11 +10,10 @@ const taskSchema={
         type:String,
         require:true
     },
-    //    taskOwner:{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     default:null
-    // },
+    // userId: {
+    //     type: schema.Types.ObjectId, 
+    //     required: false, 
+    //     ref: 'User'},
     dateCreated:{
         type:Date,
         default:Date.now

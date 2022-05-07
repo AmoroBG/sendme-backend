@@ -12,12 +12,12 @@ dotenv.config({ path: "./config.env" });
 //Register User - /users/user/register - POST
 exports.registerUser = function (req, res) {
   // check if email already exist
-  User.find({ email: req.body.email })
+  User.find({ phone: req.body.phone })
     .exec()
     .then(function (user) {
       if (user.length >= 1) {
         res.status(409).json({
-          message: "This email address is already registered!",
+          message: "This Phone number is already registered!",
         });
       } else {
         // hash password
@@ -145,7 +145,7 @@ exports.updateSomeUserRecords = function (req, res) {
 };
 // User Login - POST - "/login"
 exports.userLogin = function (req, res) {
-  User.find({ email: req.body.email })
+  User.find({ phone: req.body.phone })
     .exec()
     .then(function (user) {
       if (user.length < 1) {
@@ -165,7 +165,7 @@ exports.userLogin = function (req, res) {
           if (result) {
             // The user to login here
             const token = jwt.sign(
-              { email: user[0].email, userId: user[0]._id },
+              { phone: user[0].phone, userId: user[0]._id },
               process.env.JWT_KEY,
               { expiresIn: "1h" }
             );
@@ -192,12 +192,12 @@ exports.userLogin = function (req, res) {
 exports.userLogout = function (req, res) {
   res.cookie("jwt", " ", { maxAge: 1 });
   res.json({
-    message: "Logout",
+    message: "Logged out",
   });
 };
 
 // exports.userLogout=function(req,res){
-//   req.logout();
+//   req.logut();
 //   res.json({
 //     message: "Logged out"
 //   })

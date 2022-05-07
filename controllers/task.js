@@ -9,7 +9,7 @@ exports.createTask = function (req, res) {
             const task = new Task({
               taskName: req.body.taskName,
               taskDescription: req.body.taskDescription,
-              taskOwner: req.body.taskOwner
+           
             
             });
 
