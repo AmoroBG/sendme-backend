@@ -167,7 +167,7 @@ exports.userLogin = function (req, res) {
             const token = jwt.sign(
               { phone: user[0].phone, userId: user[0]._id },
               process.env.JWT_KEY,
-              { expiresIn: "10s" }
+              { expiresIn: "1h" }
             );
             res.cookie("jwt", token);
             return res.status(200).json({
