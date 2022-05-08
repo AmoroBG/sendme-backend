@@ -2,17 +2,17 @@
 const express = require("express");
 // REQUIRE MODULES - INTERNAL
 const Task = require("../models/task");
+const getUserIdFromToken = require("../helpers/token");
 
 //Create Task  - /tasks/task/create - POST
 exports.createTask = function (req, res) {
+            const userId = getUserIdFromToken(req)
             // create task
             const task = new Task({
               taskName: req.body.taskName,
               taskDescription: req.body.taskDescription,
-           
-            
+              userId: userId
             });
-
             task
               .save()
               .then(function () {
