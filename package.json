@@ -8,10 +8,8 @@
     "dev": "nodemon app.js",
     "start": "node app.js"
   },
-
   "author": "",
   "license": "ISC",
-
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
