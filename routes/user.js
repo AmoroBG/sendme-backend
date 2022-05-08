@@ -4,14 +4,16 @@ const router = express.Router();
 // REQUIRE MODULES - INTERNAL
 const user = require("../controllers/user");
 
+
 router.post("/register", user.registerUser);
 router.get("/", user.getUsers)
-router.get("/:userId", user.getUser)
+router.post("/login", user.userLogin)
+router.get("/logout", user.userLogout)
 router.delete("/", user.deleteUsers)
+router.get("/:userId", user.getUser)
 router.delete("/:userId", user.deleteUser)
 router.put("/:userId", user.updateUserRecords)
 router.patch("/:userId", user.updateUserRecords)
-router.post("/login", user.userLogin)
-router.get("/logout", user.userLogout)
+
 
 module.exports = router;

@@ -167,8 +167,9 @@ exports.userLogin = function (req, res) {
             const token = jwt.sign(
               { phone: user[0].phone, userId: user[0]._id },
               process.env.JWT_KEY,
-              { expiresIn: "1h" }
+              { expiresIn: "10s" }
             );
+            res.cookie("jwt", token);
             return res.status(200).json({
               message: "Auth Successful",
               token: token,
@@ -190,7 +191,8 @@ exports.userLogin = function (req, res) {
 
 // User Logout - GET - "/logout"
 exports.userLogout = function (req, res) {
-  res.cookie("jwt", " ", { maxAge: 1 });
+    res.clearCookie("jwt");
+  // res.cookie("jwt", " ", { maxAge: 1 });
   res.json({
     message: "Logged out",
   });
