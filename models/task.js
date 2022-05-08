@@ -1,6 +1,6 @@
 // REQUIRE PACKAGES - EXTERNAL
 const mongoose = require("mongoose");
-
+const  schema = mongoose.Schema
 const taskSchema={
     taskName:{
         type:String,
@@ -10,14 +10,11 @@ const taskSchema={
         type:String,
         require:true
     },
-    // userId: {
-    //     type: schema.Types.ObjectId, 
-    //     required: false, 
-    //     ref: 'User'},
     dateCreated:{
         type:Date,
         default:Date.now
-    }
+    },
+    userId: {type: schema.Types.ObjectId, required: true, ref: 'User'}
     
 }
 const Task=mongoose.model("Task", taskSchema)
