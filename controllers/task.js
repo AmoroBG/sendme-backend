@@ -4,7 +4,7 @@ const express = require("express");
 const Task = require("../models/task");
 const getUserIdFromToken = require("../helpers/token");
 
-//Create Task  - /tasks/task/create - POST
+//Create Task  - /tasks/create - POST
 exports.createTask = function (req, res) {
             const userId = getUserIdFromToken(req)
             // create task
@@ -105,7 +105,7 @@ exports.updateSomeTaskRecords = function (req, res) {
   Task.findOneAndUpdate({ _id: req.params.taskId }, { $set: req.body })
     .then(function () {
       res.status(201).json({
-        message: "Task record updated",
+        message: "Some Task records updated",
       });
     })
     .catch(function (err) {

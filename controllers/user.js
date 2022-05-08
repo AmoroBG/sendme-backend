@@ -9,7 +9,7 @@ const { json } = require("express/lib/response");
 
 // LOAD CONFIG
 dotenv.config({ path: "./config.env" });
-//Register User - /users/user/register - POST
+//Register User - /users/register - POST
 exports.registerUser = function (req, res) {
   // check if email already exist
   User.find({ phone: req.body.phone })
@@ -134,7 +134,7 @@ exports.updateSomeUserRecords = function (req, res) {
   User.findOneAndUpdate({ _id: req.params.userId }, { $set: req.body })
     .then(function () {
       res.status(201).json({
-        message: "User record updated",
+        message: "Some user records updated",
       });
     })
     .catch(function (err) {

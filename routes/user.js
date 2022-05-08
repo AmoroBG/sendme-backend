@@ -13,7 +13,7 @@ router.delete("/", user.deleteUsers)
 router.get("/:userId", user.getUser)
 router.delete("/:userId", user.deleteUser)
 router.put("/:userId", user.updateUserRecords)
-router.patch("/:userId", user.updateUserRecords)
+router.patch("/:userId", user.updateSomeUserRecords)
 
 
 module.exports = router;

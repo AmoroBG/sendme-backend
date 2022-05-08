@@ -14,7 +14,11 @@ const taskSchema={
         type:Date,
         default:Date.now
     },
-    userId: {type: schema.Types.ObjectId, required: true, ref: 'User'}
+    userId: {
+        type: schema.Types.ObjectId, 
+        required: true, 
+        ref: 'User'
+    }
     
 }
 const Task=mongoose.model("Task", taskSchema)

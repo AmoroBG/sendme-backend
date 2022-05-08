@@ -1,6 +1,8 @@
 const path = require('path')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const config=require('./config')
+
 
 // LOAD CONFIG
 dotenv.config({
@@ -9,7 +11,7 @@ dotenv.config({
 
 // Connecting to Database
 const dbconnect = mongoose
-  .connect(process.env.DATABASE_URI, {
+  .connect(config.dbURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
