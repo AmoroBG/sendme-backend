@@ -1,0 +1,1 @@
+Sendme is a platform that connect busy people to people ready and ready to run errands for them at a fee.
