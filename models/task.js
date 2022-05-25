@@ -1,12 +1,12 @@
 // REQUIRE PACKAGES - EXTERNAL
 const mongoose = require("mongoose");
-const  schema = mongoose.Schema
-const taskSchema={
-    taskName:{
+const  Schema = mongoose.Schema
+const taskSchema = new Schema({
+    name:{
         type:String,
         require:true
     }, 
-    taskDescription:{
+    description:{
         type:String,
         require:true
     },
@@ -14,12 +14,12 @@ const taskSchema={
         type:Date,
         default:Date.now
     },
-    userId: {
-        type: schema.Types.ObjectId, 
+    creator: {
+        type: Schema.Types.ObjectId, 
         required: true, 
         ref: 'User'
     }
     
-}
+})
 const Task=mongoose.model("Task", taskSchema)
 module.exports=Task

@@ -1,7 +1,7 @@
 // REQUIRE PACKAGES - EXTERNAL
 const mongoose = require("mongoose");
-
-const userSchema={
+const  Schema = mongoose.Schema
+const userSchema = new Schema({
     firstName:{
         type:String,
         require:true,
@@ -32,14 +32,20 @@ const userSchema={
     
     role:{
         type:String,
-        enum: ["normal", "admin"],
+        enum: ["normal", "admin", "superadmin"],
         default:"normal"
     },
+    tasks:[
+        {
+        type:Schema.Types.ObjectId,
+        ref:"Task"
+    },
+],
     
     dateCreated:{
         type:Date,
         default:Date.now
     }
-}
+})
 const User=mongoose.model("User", userSchema)
 module.exports=User

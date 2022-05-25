@@ -1,14 +1,5 @@
-const path = require('path')
 const mongoose = require('mongoose')
-const dotenv = require('dotenv')
 const config=require('./config')
-
-
-// LOAD CONFIG
-dotenv.config({
-  path: path.resolve(__dirname, './config.env'),
-})
-
 // Connecting to Database
 const dbconnect = mongoose
   .connect(config.dbURL, {
@@ -19,7 +10,7 @@ const dbconnect = mongoose
     console.log('Successfully connected to db')
   })
   .catch(function (err) {
-    console.log(err)
+    console.log('Database connection failed: ', err)
   })
 
 module.exports = dbconnect

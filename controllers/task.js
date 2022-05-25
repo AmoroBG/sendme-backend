@@ -1,26 +1,25 @@
-// REQUIRE PACKAGES
-const express = require("express");
 // REQUIRE MODULES - INTERNAL
 const Task = require("../models/task");
-const getUserIdFromToken = require("../helpers/token");
 
 //Create Task  - /tasks/create - POST
 exports.createTask = function (req, res) {
             const userId = getUserIdFromToken(req)
             // create task
             const task = new Task({
-              taskName: req.body.taskName,
-              taskDescription: req.body.taskDescription,
-              userId: userId
+              name: req.body.name,
+              description: req.body.description,
+              creator: req.userId
             });
             task
               .save()
               .then(function () {
+               
                 res.status(200).json({
                   message: "Task Created successfully",
                 });
               })
               .catch(function (err) {
+                console.log(err)
                 res.status(500).json({
                   error: err,
                 });

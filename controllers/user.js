@@ -3,9 +3,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 // REQUIRE MODULES - INTERNAL
-const { find } = require("../models/user");
 const User = require("../models/user");
-const { json } = require("express/lib/response");
+
 
 // LOAD CONFIG
 dotenv.config({ path: "./config.env" });
